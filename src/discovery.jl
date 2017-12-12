@@ -211,8 +211,8 @@ function find_toolkit()
         error("Could not find CUDA toolkit; specify using CUDA_(dir|HOME|ROOT) environment variable")
     end
 
-    # select
-    toolkit_path = first(dirs)
+    # select latest version
+    toolkit_path = first(sort!(dirs, rev=true))
     @debug("Using CUDA toolkit at $toolkit_path")
     return toolkit_path
 end
